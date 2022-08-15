@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  News-SwiftUI
+
+  Created by Ömer Faruk Şahin on 15.08.2022.
+  
+*/
+
+"NEWS_TITLE" = "News";
+
+"BOOKMARKS_TITLE" = "Bookmarks";
+
+"HOME" = "Home";
+
+"APP_LANGUAGE" = "en";
