@@ -47,9 +47,9 @@
 
 <div align="center">
 
-| Splash  | Pull to Refresh | 
-| ------------- | ------------- |
-| <img src="https://user-images.githubusercontent.com/56412838/184756639-bd1fd14c-b494-456f-b613-38ecd3107ed1.gif" alt="drawing" width="220"/> | <img src="https://user-images.githubusercontent.com/56412838/184756714-2db91309-a4e1-4c7e-8c18-5b489b055795.gif" alt="drawing" width="220"/>  |
+| Splash  | Pull to Refresh | Open Link | 
+| ------------- | ------------- | ------------- |
+| <img src="https://user-images.githubusercontent.com/56412838/184756639-bd1fd14c-b494-456f-b613-38ecd3107ed1.gif" alt="drawing" width="220"/> | <img src="https://user-images.githubusercontent.com/56412838/184756714-2db91309-a4e1-4c7e-8c18-5b489b055795.gif" alt="drawing" width="220"/>  | <img src="https://user-images.githubusercontent.com/56412838/184757359-0bfa8695-d285-4fd4-96e0-c4a226635b72.gif" alt="drawing" width="220"/>  |
 
 | Search  | Filter |
 | ------------- | ------------- |
