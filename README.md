@@ -39,7 +39,7 @@
 
 | Bookmarks  |  Filter |
 | ------------- | ------------- |
-| <img src="https://user-images.githubusercontent.com/56412838/184755984-169e0e91-4782-4206-978f-0b3012993d65.png" alt="ss" width="220"/> | <img src="https://user-images.githubusercontent.com/56412838/184756217-d3529bad-4ab1-491c-aabe-859cdd097534.png" alt="ss" width="220"/>  |
+| <img src="https://user-images.githubusercontent.com/56412838/184755984-169e0e91-4782-4206-978f-0b3012993d65.png" alt="ss" width="220"/> | <img src="https://user-images.githubusercontent.com/56412838/185212896-0aa664c2-40cb-40cc-8497-50bc2c167154.png" alt="ss" width="220"/>  |
 
 </div>
 
@@ -49,7 +49,7 @@
 
 | Splash  | Pull to Refresh | Open Link | 
 | ------------- | ------------- | ------------- |
-| <img src="https://user-images.githubusercontent.com/56412838/184756639-bd1fd14c-b494-456f-b613-38ecd3107ed1.gif" alt="drawing" width="220"/> | <img src="https://user-images.githubusercontent.com/56412838/184756714-2db91309-a4e1-4c7e-8c18-5b489b055795.gif" alt="drawing" width="220"/>  | <img src="https://user-images.githubusercontent.com/56412838/184757359-0bfa8695-d285-4fd4-96e0-c4a226635b72.gif" alt="drawing" width="220"/>  |
+| <img src="https://user-images.githubusercontent.com/56412838/185211898-49109b1f-dd5f-4cf8-a9b8-2b1baa138ea3.gif" alt="drawing" width="220"/> | <img src="https://user-images.githubusercontent.com/56412838/184756714-2db91309-a4e1-4c7e-8c18-5b489b055795.gif" alt="drawing" width="220"/>  | <img src="https://user-images.githubusercontent.com/56412838/184757359-0bfa8695-d285-4fd4-96e0-c4a226635b72.gif" alt="drawing" width="220"/>  |
 
 | Search  | Filter |
 | ------------- | ------------- |
