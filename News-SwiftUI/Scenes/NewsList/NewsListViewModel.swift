@@ -14,7 +14,7 @@ class NewsListViewModel: ObservableObject {
     private let newsService: NewsServiceProtocol
     private let bookmarkService: BookmarkServiceProtocol
     
-    // Common handler for different operations
+    // Common handler for different requests
     private lazy var completion: (Result<NewsResponse,NetworkError>) -> () =
     { [weak self] result in
         guard let self = self else { return }
@@ -30,7 +30,6 @@ class NewsListViewModel: ObservableObject {
         }
     }
     
-    
     init(_ newsService: NewsServiceProtocol,
          _ bookmarkService: BookmarkServiceProtocol) {
         
@@ -38,15 +37,14 @@ class NewsListViewModel: ObservableObject {
         self.newsService = newsService
     
         fetchNews()
-        news = bookmarkService.updateBookmarkedNews(in: news)
     }
     
     
-    func onAppear() {
-        fetchNews()
-        news = bookmarkService.updateBookmarkedNews(in: news)
+    func onAppear(query: String) {
+        DispatchQueue.main.async { [unowned self] in
+            self.fetchNews(query: query)
+        }
     }
-    
 }
 
 // MARK: Network Operatioons

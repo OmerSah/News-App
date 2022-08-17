@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+class SelectedState: ObservableObject {
+    @Published var article: Article?
+}
+
 struct NewsListView: View {
     
     @StateObject var viewModel: NewsListViewModel
+    
+    @StateObject var selectedState = SelectedState()
     
     @State private var searchText = ""
     
@@ -18,65 +24,65 @@ struct NewsListView: View {
     @State private var showSafari = false
     
     var body: some View {
-        
         NavigationView {
-            VStack {
+            List(viewModel.news) {  article in
+                Button {
+                    showSafari = true
+                    selectedState.article = article
+                } label: {
+                    NewsListCell(
+                        article: article,
+                        bookmarkSelected: article.isBookmarked
+                    ) {
+                        viewModel.bookmarkButtonAction(
+                                article: article
+                        )
+                    }
+                }
+            }
+            .listStyle(DefaultListStyle())
+            .navigationTitle("NEWS_TITLE".localized)
+            .searchable(text: $searchText, placement: .toolbar)
+            .onChange(of: searchText) { value in
+                viewModel.fetchNews(
+                    query: searchText
+                )
+            }
+            .refreshable {
+                viewModel.fetchNews()
+            }
+            .toolbar {
+                ToolbarItem {
+                    FilterButton(
+                        showFilter: $showFilter
+                    )
+                }
+            }
+            .onAppear(perform: {
+                viewModel.fetchNews(query: searchText)
+            })
+            .overlay {
                 if viewModel.news.isEmpty {
                     ProgressView()
                         .progressViewStyle(.circular)
                 }
-                else {
-                    List {
-                        ForEach(viewModel.news) { article in
-                            Button {
-                                showSafari = true
-                            } label: {
-                                NewsListCell(
-                                    article: article,
-                                    bookmarkSelected: article.isBookmarked
-                                ) {
-                                    viewModel
-                                        .bookmarkButtonAction(
-                                            article: article
-                                        )
-                                }.sheet(isPresented: $showSafari) {
-                                    if let url = URL(string: article.url ?? "") {
-                                        SafariView(url: url)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .listStyle(.automatic)
-                    .searchable(text: $searchText, placement: .toolbar)
-                    .onChange(of: searchText) { value in
-                        viewModel.fetchNews(
-                            query: searchText
-                        )
-                    }
-                    .toolbar {
-                        ToolbarItem {
-                           FilterButton(
-                            showFilter: $showFilter
-                           )
-                        }
-                    }
+            }
+            .sheet(isPresented: $showSafari) {
+                if let selectedArticle = selectedState.article,
+                   let url = URL(
+                    string: selectedArticle.url ?? ""
+                ) {
+                    SafariView(url: url)
                 }
             }
-            .navigationTitle("NEWS_TITLE".localized)
-            .onAppear {
-                viewModel.onAppear()
-            }
-            .refreshable {
-                viewModel.fetchNews()
-            }.sheet(isPresented: $showFilter) {
+            .sheet(isPresented: $showFilter) {
                 FilterView(presenting: $showFilter) { from, to in
                     viewModel.filterNewsByRange(
                         from: from,
                         to: to,
                         query: self.searchText
                     )
-                }.offset(y: -200)
+                }.offset(y: UIScreen.main.bounds.height * -0.2)
             }
         }
         

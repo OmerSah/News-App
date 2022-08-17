@@ -12,7 +12,7 @@ struct NewsListCell: View {
     
     let article: Article
     
-    @State private(set) var bookmarkSelected: Bool
+    @State var bookmarkSelected: Bool
     
     var bookmarkButtonAction: (() -> Void)?
     
@@ -20,14 +20,18 @@ struct NewsListCell: View {
         
         HStack {
             ZStack {
-                KFImage.url(URL(
+                KFImage(URL(
                     string: article.urlToImage ?? ""
                 ))
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 164, height: 164, alignment: .center)
-                    .clipped()
-                    .cornerRadius(16)
+                .placeholder {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                }
+                .resizable()
+                .scaledToFill()
+                .frame(width: 164, height: 164, alignment: .center)
+                .clipped()
+                .cornerRadius(16)
                 
                 Button {
                     bookmarkSelected.toggle()

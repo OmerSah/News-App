@@ -27,7 +27,9 @@ class ServiceManager {
             .responseDecodable(of: T.self, decoder: JSONDecoder.jsonDecoder) { (response) in
                 switch response.result {
                 case .success(let value):
-                    completion(.success(value))
+                    DispatchQueue.main.async {
+                        completion(.success(value))
+                    }
                 case .failure(let error):
                     print(error)
                     completion(.failure(NetworkError.invalidResponse))

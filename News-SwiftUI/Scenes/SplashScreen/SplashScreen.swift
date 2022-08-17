@@ -13,6 +13,8 @@ struct SplashScreen: View {
     @State private var titleOpacity = 0.0
     @State private var title = "Open Main"
     
+    private let viewModel = SplashScreenViewModel()
+    
     var body: some View {
         if openMainScene {
             TabView {
@@ -58,8 +60,21 @@ struct SplashScreen: View {
                     .asyncAfter(
                         deadline: .now() + 2.0
                     ) {
-                        self.openMainScene.toggle()
+                        viewModel.cancellable = viewModel.askNotificationPermission()
+                            .sink { error in
+                                DispatchQueue.main.async {
+                                    self.openMainScene = true
+                                }
+                                print(error)
+                            } receiveValue: { permission in
+                                DispatchQueue.main.async {
+                                    self.openMainScene = true
+                                }
+                                print("Granted: \(permission)")
+                            }
+                            
                     }
+                
             }
         }
         

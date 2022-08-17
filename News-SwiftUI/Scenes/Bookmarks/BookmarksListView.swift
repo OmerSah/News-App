@@ -11,6 +11,8 @@ struct BookmarksListView: View {
     
     @StateObject var viewModel: BookmarkViewModel
     
+    @StateObject var selectedState = SelectedState()
+    
     @State private var showSafari = false
     
     var body: some View {
@@ -20,18 +22,14 @@ struct BookmarksListView: View {
                 ForEach(viewModel.news) { article in
                     Button {
                         showSafari = true
+                        selectedState.article = article
                     } label: {
                         BookmarksListCell(
                             article: article
                         )
-                        .sheet(isPresented: $showSafari) {
-                            if let url = URL(string: article.url ?? "") {
-                                SafariView(url: url)
-                            }
-                        }
                     }.tint(.black)
-                    
-                }.onDelete { indexSet in
+                }
+                .onDelete { indexSet in
                     guard let index = indexSet.first
                     else {
                         return
@@ -42,6 +40,12 @@ struct BookmarksListView: View {
             .navigationTitle("BOOKMARKS_TITLE".localized)
             .onAppear {
                 viewModel.onAppear()
+            }
+            .sheet(isPresented: $showSafari) {
+                if  let selectedArticle = selectedState.article,
+                    let url = URL(string: selectedArticle.url ?? "") {
+                    SafariView(url: url)
+                }
             }
         }
         
