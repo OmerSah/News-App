@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  News-UI
+
+  Created by Ömer Faruk Şahin on 18.08.2022.
+  
+*/
+
+"NEWS_TITLE" = "Haberler";
+
+"BOOKMARKS_TITLE" = "Favoriler";
+
+"HOME" = "Ev";
+
+"FILTER_BUTTON" = "Filtrele";
+
+"FROM_DATE_PICKER" = "Şu tarihten: ";
+
+"TO_DATE_PICKER" = "Şu tarihe: ";
+
+"FILTER_VIEW_TITLE" = "Tarihleri seçin: ";
+
+"APP_LANGUAGE" = "tr";

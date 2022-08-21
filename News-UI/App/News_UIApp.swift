@@ -1,14 +1,14 @@
 //
-//  News_SwiftUIApp.swift
-//  News-SwiftUI
+//  News_UIApp.swift
+//  News-UI
 //
-//  Created by Ömer Faruk Şahin on 15.08.2022.
+//  Created by Ömer Faruk Şahin on 17.08.2022.
 //
 
 import SwiftUI
 
 @main
-struct News_SwiftUIApp: App {
+struct News_UIApp: App {
     var body: some Scene {
         WindowGroup {
             SplashScreen()

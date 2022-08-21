@@ -23,12 +23,6 @@ struct NewsListView: View {
     
     @State private var showSafari = false
     
-    @State private var fromDate = Date()
-    
-    private let minimumDate: Date = DateFormatter.filterDateFormat.date(from: "2022-07-20")!
-    private let maximumDate: Date = DateFormatter.filterDateFormat.date(from: "2022-08-15")!
-    
-    @State private var toDate = Date()
     var body: some View {
         NavigationView {
             List(viewModel.news) {  article in
@@ -89,7 +83,6 @@ struct NewsListView: View {
                         query: self.searchText
                     )
                 }.offset(y: UIScreen.main.bounds.height * -0.2)
-            }
             }
         }
         
